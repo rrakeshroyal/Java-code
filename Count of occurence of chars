@@ -1,0 +1,24 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+import java.lang.*; 
+import java.util.stream.Collectors;
+public class Main {
+public static void main(String[] args) {
+    
+String s ="Communications is world ";
+
+   Map<String , Long > map =   Arrays.stream(s.split(""))
+           // .map(String::toLowerCase)
+            .collect(Collectors.groupingBy(k->k,
+                     LinkedHashMap::new,
+                     Collectors.counting()));
+            
+            
+
+
+    System.out.println("Sum of these numbers: "+map);
+    }//main
+}//class
