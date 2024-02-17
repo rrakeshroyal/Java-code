@@ -4,20 +4,38 @@ import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 import java.lang.*; 
+import java.util.Arrays;
 import java.util.stream.Collectors;
 public class Main {
 public static void main(String[] args) {
     
-String s ="Communications is world ";
+String s ="Communi cations ";
 
-   Map<String , Long > map =   Arrays.stream(s.split(""))
-           // .map(String::toLowerCase)
-            .collect(Collectors.groupingBy(k->k,
-                     LinkedHashMap::new,
-                     Collectors.counting()));
-            
-            
+String k =s.replaceAll("\\s+" , "");
 
+    Map<String,Long> map   =  Arrays.stream(k.split(""))
+              .map(String::toLowerCase)
+              .collect(
+                Collectors.groupingBy(J->J,
+                HashMap::new,
+                Collectors.counting()
+                 
+                )
+              );
+
+HashSet<String> hs = new HashSet<>();
+map.forEach((key, value)->
+      {
+             if(!hs.contains(key))
+             {
+                System.out.println(key+"--"+value);
+                hs.add(key);
+             }
+      }
+
+);
+    
+              
 
     System.out.println("Sum of these numbers: "+map);
     }//main
